@@ -47,7 +47,7 @@ class LeftNav extends Component {
           
           const childrenItem = item.children.find(cItem => path.startsWith(cItem.key))
           if (childrenItem) {
-            this.openKey = item.key
+            this.openKey = item.key // menu whose sub-menu equals to path will be open by default.
           }
           return (
             <SubMenu key={item.key} icon={item.icon} title={item.title}>

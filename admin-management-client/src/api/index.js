@@ -1,10 +1,11 @@
 import ajax from "./ajax";
 
-export const key = 'f51b2f475b9c2c8753ee35518f3f69fb'
+export const key = '90cff0e7824450c134a4a5fe0aad57d6'
 export const reqLogin = (username, password) => ajax('/login', {username, password}, 'post')
 // export const reqAddUser = (user) => ajax('/login', user, 'post')
-export const reqIp = (key) => ajax('https://restapi.amap.com/v3/ip', {key})
-export const reqWeather = (city, key) => ajax('https://restapi.amap.com/v3/weather/weatherInfo', {city, key})
+// export const reqIp = (key) => ajax('https://restapi.amap.com/v3/ip', {key})
+// export const reqLatLong = (ip, format) => ajax('https://ipapi.co',{ip, format})
+export const reqWeather = (lat, lon, appid) => ajax('https://api.openweathermap.org/data/2.5/weather', {lat, lon, appid, units:'metric'})
 export const reqCategorys = (parentId) => ajax('/manage/category/list',{parentId})
 export const reqAddCategory = (parentId, categoryName) => ajax('/manage/category/add',{parentId, categoryName}, 'post')
 export const reqUpdateCategory = (categoryId, categoryName) => ajax('/manage/category/update',{categoryId, categoryName}, 'post')

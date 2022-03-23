@@ -6,29 +6,32 @@ import {connect} from 'react-redux'
 
 import './header.less'
 import menuList from '../../config/config'
-import {key, reqWeather, reqIp} from '../../api/index'
+import {key, reqWeather} from '../../api/index'
 import {resetUser} from '../../redux/actions'
 
 const { confirm } = Modal;
 
 class Header extends Component {
   state = {
-    curTime: new Date().toUTCString(),
+    curTime: new Date().toLocaleString(),
     weather: '',
     temperature: '',
   }
   getCurTime = () => {
     this.timer1 = setInterval(() => {
-      let curTime = new Date().toUTCString()
+      let curTime = new Date().toLocaleString()
       this.setState({curTime})
     }, 1000); 
   }
 
   getWeatherInfo = async () => {
-    let {adcode} = await reqIp(key) //get city code by ip
-    let result = await reqWeather(adcode, key) //get city weather by city code
-    const {temperature, weather} = result.lives[0]
-    this.setState({temperature, weather}) 
+    let response = await fetch('https://api.ipify.org/?format=json') //get user's current ip
+    let {ip} = await response.json()
+    response = await fetch(`https://ipapi.co/${ip}/json/`) // get latitude and longtitude
+    let {latitude, longitude} = await response.json()
+    let result = await reqWeather(latitude, longitude , key) //get city weather by lat & lon
+    const {main:{temp}, weather} = result
+    this.setState({temperature:temp,weather:weather[0].main}) 
   }
   //Get weather info every three hours
   getWeatherInfoPeriod =  () => {
