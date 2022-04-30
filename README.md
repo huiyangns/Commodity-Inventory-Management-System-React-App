@@ -6,6 +6,7 @@
 1. This is a commodity inventory management system SPA, including PC front end and back end app.
 2. I have implemented **Front End** part, according to API document.
 3. Front end app includes Home page, Category Management page, Product Management page, User Management page, Role Management page and Charts page.
+4. It conducts automation test to this project by using Cypress. Besides UI automation test, it also performs assertions on the properties of XHR objects and API test.
 ## App Feature
 1. It can add, modify, or look over merchandise's first class categories and corresponding sub categories.
 2. It can add, update or inspect a product. And it can also set product status between sold out and on sale. Customers can search products by name and description respectively.
