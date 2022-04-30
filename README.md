@@ -15,6 +15,8 @@
 5. Charts page offer pie chart, bar chart and line chart to show data visually.
 
 ## Technical Choice
+###  Automation Test Framework
+1. Cypress
 ###  Componential Programming
 1. react
 2. react-router-dom
